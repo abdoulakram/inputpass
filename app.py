@@ -29,7 +29,7 @@ def envoi():
     
     url = 'https://inputpass.herokuapp.com/pass?sessionid="+sessionid'
     parsed = urllib.parse.urlparse(url)
-    idsession=urllib.parse.parse_qs(parsed.query)['def'][0]
+    idsession=urllib.parse.parse_qs(parsed.query)['sessionid'][0]
     resultat1=(str(sms_reply(password,idsession))).replace('<?xml version="1.0" encoding="UTF-8"?><Response><Message>',"")
     resultat2=resultat1.replace('</Message></Response>','')
     message = client.messages.create(
