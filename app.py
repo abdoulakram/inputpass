@@ -7,7 +7,7 @@ import random
 import string
 from flask import Flask, jsonify, request, render_template, Markup, json, session, redirect, url_for
 from twilio.rest import Client
-from fonction import sms_reply2
+from fonction import sms_reply
 app = Flask(__name__)
 
 
@@ -30,7 +30,7 @@ def envoi():
                               from_='whatsapp:+14155238886',
                               to='whatsapp:+221776147852'
                           )
-    sms_reply2()
+    sms_reply()
     
 if __name__ == "__main__":
     app.run(debug =True)

@@ -10,9 +10,13 @@ import string
 sessionid="lasttest2"#datetime.now().strftime("%d-%b-%Y-%H:%M:%S.%f") 
 
 
-def sms_reply2():
+def sms_reply():
     
     
+     
+    phone_no = request.form.get('From')
+    msg = request.form.get('Body')
+    resp = MessagingResponse()
     global sessionid
     
     
@@ -31,7 +35,7 @@ def sms_reply2():
     params={
     "sessionid":sessionid,
     "msisdn":"242055565990",
-    "input":'0000'
+    "input":msg
             }
     
     query_string=urllib.parse.urlencode(params)
@@ -39,6 +43,28 @@ def sms_reply2():
     with urllib.request.urlopen(url=req,data=data) as response:
         
         response_text=response.read()
+        header=response.headers
+        
+            
+   
+        response_text_str=str(response_text)
+        liste=response_text_str.split("\\n")
+    
+    
+        liste.remove("'")
+        chaine=""
+        for i in range(len(liste)):
+            chaine+=liste[i]+"\n"
+        
+        
+        resp.message(str(chaine.replace("b'","")))
+        if(str(resp).__contains__("-Nouveau Solde")):
+            return str(resp)+str("\n\n 00: MENU PRINCIPAL")
+        
+
+    
+   
+        return str(resp)
     
 
 
