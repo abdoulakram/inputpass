@@ -11,7 +11,7 @@ from fonction import sms_reply
 app = Flask(__name__)
 
 
-@app.route("/", methods=['GET','POST'])
+@app.route("/pass", methods=['GET','POST'])
 
 def retrievePassWord():
     return render_template('password.html')
