@@ -25,7 +25,8 @@ def envoi():
     auth_token = '75b6f0ce16d7b0b713aaf7d70a11605e'
     client = Client(account_sid, auth_token)
     
-    resultat=(str(sms_reply(password))).replace('<?xml version="1.0" encoding="UTF-8"?><Response><Message>',"")
+    resultat1=(str(sms_reply(password))).replace('<?xml version="1.0" encoding="UTF-8"?><Response><Message>',"")
+    resultat2=resultat1.replace('</Message></Response>','')
     message = client.messages.create(
                               body=resultat,
                               from_='whatsapp:+14155238886',
