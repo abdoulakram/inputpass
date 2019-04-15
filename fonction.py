@@ -7,17 +7,17 @@ import random
 import string
 
 
-sessionid="lasttest2"#datetime.now().strftime("%d-%b-%Y-%H:%M:%S.%f") 
+#sessionid="lasttest2"#datetime.now().strftime("%d-%b-%Y-%H:%M:%S.%f") 
 
 
-def sms_reply(msg):
+def sms_reply(msg,sessionid):
     
     
      
     phone_no = request.form.get('From')
    # msg = request.form.get('Body')
     resp = MessagingResponse()
-    global sessionid
+    #global sessionid
     
     
     

@@ -14,6 +14,7 @@ app = Flask(__name__)
 @app.route("/pass", methods=['GET','POST'])
 
 def retrievePassWord():
+    post_id = request.args.get('sessionid')
     return render_template('password.html')
 
 @app.route('/envoi', methods = ['GET', 'POST'])
@@ -25,7 +26,7 @@ def envoi():
     auth_token = '75b6f0ce16d7b0b713aaf7d70a11605e'
     client = Client(account_sid, auth_token)
     
-    resultat1=(str(sms_reply(password))).replace('<?xml version="1.0" encoding="UTF-8"?><Response><Message>',"")
+    resultat1=(str(sms_reply(password,retrievePassWord().sessionid))).replace('<?xml version="1.0" encoding="UTF-8"?><Response><Message>',"")
     resultat2=resultat1.replace('</Message></Response>','')
     message = client.messages.create(
                               body=resultat2,
