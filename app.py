@@ -26,7 +26,7 @@ def envoi():
     client = Client(account_sid, auth_token)
 
     message = client.messages.create(
-                              body=sms_reply(password),
+                              body=str(sms_reply(password)),
                               from_='whatsapp:+14155238886',
                               to='whatsapp:+221776147852'
                           )
