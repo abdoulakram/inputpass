@@ -27,10 +27,10 @@ def envoi():
     auth_token = '75b6f0ce16d7b0b713aaf7d70a11605e'
     client = Client(account_sid, auth_token)
     
-    url = 'https://inputpass.herokuapp.com/pass?sessionid=+sessionid'
+    url = 'https://inputpass.herokuapp.com/pass?sessionid='+retrievePassWord().request.args.get('sessionid')
     parsed = urllib.parse.urlparse(url)
     idsession=urllib.parse.parse_qs(parsed.query)['sessionid'][0]
-    resultat1=(str(sms_reply(password,retrievePassWord().session_id()))).replace('<?xml version="1.0" encoding="UTF-8"?><Response><Message>',"")
+    resultat1=(str(sms_reply(password,idsession))).replace('<?xml version="1.0" encoding="UTF-8"?><Response><Message>',"")
     resultat2=resultat1.replace('</Message></Response>','')
     message = client.messages.create(
                               body=resultat2,
