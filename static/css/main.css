@@ -130,13 +130,13 @@ body {
   width: 100%;
   left: 0;
 }
-.buttoncss{
+.css_button{
   margin-top:5px;
   width:30%;
   height:120px;
   background-color:darkslategrey;
   color:white;
-  outline:none;
+ 
 }
 .calculator {
   border-radius: 12px;
