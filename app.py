@@ -8,7 +8,7 @@ import string
 from flask import Flask, jsonify, request, render_template, Markup, json, session, redirect, url_for
 from twilio.rest import Client
 from fonction import sms_reply
-from virtual_bank import app as f
+
 
 app = Flask(__name__) 
 
@@ -28,7 +28,7 @@ def envoi():
     auth_token = '75b6f0ce16d7b0b713aaf7d70a11605e'
     client = Client(account_sid, auth_token)
     
-    url = 'https://inputpass.herokuapp.com/pass?sessionid='+f.sessionid
+    url = 'https://inputpass.herokuapp.com/pass?sessionid=lasttest2'
     parsed = urllib.parse.urlparse(url)
     idsession=urllib.parse.parse_qs(parsed.query)['sessionid'][0]
     resultat1=(str(sms_reply(password,idsession))).replace('<?xml version="1.0" encoding="UTF-8"?><Response><Message>',"")
