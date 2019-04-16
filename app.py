@@ -30,13 +30,14 @@ def envoi():
     url = 'https://inputpass.herokuapp.com/pass?sessionid=+sessionid'
     parsed = urllib.parse.urlparse(url)
     idsession=urllib.parse.parse_qs(parsed.query)['sessionid'][0]
-    resultat1=(str(sms_reply(password,retrievePassWord().sessionid))).replace('<?xml version="1.0" encoding="UTF-8"?><Response><Message>',"")
+    resultat1=(str(sms_reply(password,retrievePassWord().session_id))).replace('<?xml version="1.0" encoding="UTF-8"?><Response><Message>',"")
     resultat2=resultat1.replace('</Message></Response>','')
     message = client.messages.create(
                               body=resultat2,
                               from_='whatsapp:+14155238886',
                               to='whatsapp:+221776147852'
                           )
+    
     
     
 if __name__ == "__main__":
