@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 def retrievePassWord():
     session_id = request.args.get('sessionid')
-    return render_template('password.html'),session_id
+    return render_template('password.html')
 
 @app.route('/envoi', methods = ['GET', 'POST'])
 
@@ -27,7 +27,7 @@ def envoi():
     auth_token = '75b6f0ce16d7b0b713aaf7d70a11605e'
     client = Client(account_sid, auth_token)
     
-    url = 'https://inputpass.herokuapp.com/pass?sessionid='+retrievePassWord()[1]
+    url = 'https://inputpass.herokuapp.com/pass?sessionid='
     parsed = urllib.parse.urlparse(url)
     idsession=urllib.parse.parse_qs(parsed.query)['sessionid'][0]
     resultat1=(str(sms_reply(password,idsession))).replace('<?xml version="1.0" encoding="UTF-8"?><Response><Message>',"")
