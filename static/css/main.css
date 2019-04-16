@@ -125,7 +125,11 @@ body {
 .container > p {
   text-align: center;
 }
-
+.full-width-div {
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
 .calculator {
   border-radius: 12px;
   box-shadow: 0 0 40px 0px rgba(0, 0, 0, 0.15);
