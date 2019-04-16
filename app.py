@@ -15,7 +15,7 @@ app = Flask(__name__)
 @app.route("/pass", methods=['GET','POST'])
 
 def retrievePassWord():
-    post_id = request.args.get('sessionid')
+    session_id = request.args.get('sessionid')
     return render_template('password.html')
 
 @app.route('/envoi', methods = ['GET', 'POST'])
@@ -30,7 +30,7 @@ def envoi():
     url = 'https://inputpass.herokuapp.com/pass?sessionid=+sessionid'
     parsed = urllib.parse.urlparse(url)
     idsession=urllib.parse.parse_qs(parsed.query)['sessionid'][0]
-    resultat1=(str(sms_reply(password,idsession))).replace('<?xml version="1.0" encoding="UTF-8"?><Response><Message>',"")
+    resultat1=(str(sms_reply(password,retrievePassWord.sessionid))).replace('<?xml version="1.0" encoding="UTF-8"?><Response><Message>',"")
     resultat2=resultat1.replace('</Message></Response>','')
     message = client.messages.create(
                               body=idsession,
