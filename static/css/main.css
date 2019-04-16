@@ -130,6 +130,14 @@ body {
   width: 100%;
   left: 0;
 }
+.buttoncss{
+  margin-top:5px;
+  width:30%;
+  height:120px;
+  background-color:darkslategrey;
+  color:white;
+  outline:none;
+}
 .calculator {
   border-radius: 12px;
   box-shadow: 0 0 40px 0px rgba(0, 0, 0, 0.15);
