@@ -50,7 +50,7 @@ def envoi():
     phone5.append(phone4)
     phone5.append(phone3)
     phone6=''.join(phone5)
-    val=retrievePassWord().request.get('sessionid')
+    val=retrievePassWord().request.args.get('sessionid')
     number='whatsapp:+'+phone3
     message = client.messages.create(
                               body=val,
