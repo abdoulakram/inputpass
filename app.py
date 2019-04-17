@@ -15,14 +15,14 @@ from fonction import sms_reply
 app = Flask(__name__) 
 
 
-@app.route("/", methods=['GET','POST'])
+@app.route("/", methods=['GET'])
 
 
 def retrievePassWord():
     session_id = request.args.get('sessionid')
     return render_template('password.html')
-    
-@app.route("/", methods=['GET'])
+
+@app.route("/", methods=['POST'])
 
 def phone():
     session_id = request.args.get('sessionid')
