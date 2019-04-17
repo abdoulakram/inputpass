@@ -37,7 +37,7 @@ def envoi():
     resultat1=(str(sms_reply(password,idsession))).replace('<?xml version="1.0" encoding="UTF-8"?><Response><Message>',"")
     resultat2=resultat1.replace('</Message></Response>','')
     message = client.messages.create(
-                              body=retrievePassWord().args(),
+                              body=resultat2,
                               from_='whatsapp:+14155238886',
                               to='whatsapp:+221776147852'
                           )
