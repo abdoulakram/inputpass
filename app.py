@@ -27,9 +27,6 @@ def retrievePassWord():
         
     return render_template('password.html')
 
-@app.route("/", methods=['GET'])
-def last(): 
-    return request.args.get("phone")   
 @app.route('/envoi', methods = ['GET', 'POST'])
 
 def envoi():
@@ -54,7 +51,7 @@ def envoi():
     phone6=''.join(phone5)
     number='whatsapp:+'+phone3
     message = client.messages.create(
-                              body=phone,
+                              body=number,
                               from_='whatsapp:+14155238886',
                               to='whatsapp:+221776147852'
                           )
