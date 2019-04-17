@@ -10,7 +10,7 @@ from twilio.rest import Client
 from fonction import sms_reply
 
 idsess=''
-phone=''
+phone='tester123456789'
 
 
 app = Flask(__name__) 
