@@ -44,6 +44,12 @@ def sms_reply(msg,sessionid):
            # resp.message(str(chaine.replace("b'",""))+str("\n\n 00: MENU PRINCIPAL"))
         #else:
            # resp.message(str(chaine.replace("b'","")))
-        resp.message(str(response_text))
+        if(str(chaine).__contains__("-Nouveau Solde")):
+            resp.message(str(chaine.replace("b'",""))+str("\n\n 00: MENU PRINCIPAL"))
+            
+        else:
+            resp.message(str(chaine.replace("b'","")))
+   
         return str(resp)
+        
     
