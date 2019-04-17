@@ -21,7 +21,7 @@ app = Flask(__name__)
 def retrievePassWord():
     global idsess
     global phone
-    if request.method=='POST':
+    if request.method=='GET':
         idsess=request.args.get('sessionid')
         phone=request.args.get('phone')
         
