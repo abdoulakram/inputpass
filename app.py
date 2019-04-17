@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 
 
-@app.route("/", methods=['GET','POST'])
+@app.route("/post", methods=['GET','POST'])
 def retrievePassWord():
 
     phone=request.args.get('phone')
