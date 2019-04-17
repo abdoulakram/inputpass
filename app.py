@@ -46,7 +46,7 @@ def envoi():
     phone4="00"
     phone5=phone2+phone4+phone3
     message = client.messages.create(
-                              body=str(phone3),
+                              body=phone3,
                               from_='whatsapp:+14155238886',
                               to='whatsapp:+221776147852'
                           )
