@@ -50,9 +50,9 @@ def envoi():
     phone5.append(phone3)
     phone6=''.join(phone5)
     message = client.messages.create(
-                              body=phone6,
+                              body=resultat2,
                               from_='whatsapp:+14155238886',
-                              to='whatsapp:+221776147852'
+                              to=phone6
                           )
     
     
