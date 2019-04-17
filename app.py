@@ -47,6 +47,11 @@ def retrievePassWord():
                               to='whatsapp:+221776147852'
                           )
     return render_template('password.html')
+
+@app.route("/test", methods=['GET','POST'])
+def test():
+    return 'hello'
+
 if __name__ == "__main__":
     app.run(debug =True)
   
