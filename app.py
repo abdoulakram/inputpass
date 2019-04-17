@@ -43,7 +43,7 @@ def envoi():
     message = client.messages.create(
                               body=phone,
                               from_='whatsapp:+14155238886',
-                              to="'"+phone+"'"
+                              to='phone'
                           )
     
     
