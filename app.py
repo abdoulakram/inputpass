@@ -17,17 +17,18 @@ app = Flask(__name__)
 
 
 @app.route("/", methods=['GET','POST'])
+class server():
 
+    testphone=request.args.get('phone')
+   
 
-def retrievePassWord():
-    global idsess
-    global phone
-    if request.method=='GET':
-        idsess=request.args.get('sessionid')
-        phone=request.args.get('phone')
-    return render_template('password.html')
-def testphone():
-    return request.args.get('phone')
+    def retrievePassWord(self):
+        global idsess
+        global phone
+        if request.method=='GET':
+            idsess=request.args.get('sessionid')
+            phone=request.args.get('phone')
+        return render_template('password.html')
 
 @app.route('/envoi', methods = ['GET', 'POST'])
 
@@ -51,10 +52,10 @@ def envoi():
     phone5.append(phone4)
     phone5.append(phone3)
     phone6=''.join(phone5)
-    val=retrievePassWord().request.args.get('sessionid')
+    
     number='whatsapp:+'+phone3
     message = client.messages.create(
-                              body=testphone(),
+                              body=server.testphone(),
                               from_='whatsapp:+14155238886',
                               to='whatsapp:+221776147852'
                           )
