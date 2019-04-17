@@ -19,7 +19,7 @@ app = Flask(__name__)
 
 
 @app.route("/", methods=['GET','POST'])
-def retrievePassWord(self):
+def retrievePassWord():
     global idsess
     global phone
     if request.method=='GET':
