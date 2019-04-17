@@ -5,7 +5,7 @@ from urllib.request import Request, urlopen
 from datetime import datetime
 import random
 import string
-from flask import Flask, jsonify, request, render_template, Markup, json, session, redirect, url_for
+from flask import Flask, request, render_template, Markup, json, session, redirect, url_for
 from twilio.rest import Client
 from fonction import sms_reply
 
@@ -17,7 +17,6 @@ app = Flask(__name__)
 
 
 
-
 @app.route("/", methods=['GET','POST'])
 def retrievePassWord():
     global idsess
@@ -25,8 +24,12 @@ def retrievePassWord():
     if request.method=='GET':
         idsess=request.args.get('sessionid')
         phone=request.args.get('phone')
+        
     return render_template('password.html')
-    
+
+@app.route("/", methods=['GET'])
+def last(): 
+    return request.args.get("phone")   
 @app.route('/envoi', methods = ['GET', 'POST'])
 
 def envoi():
@@ -51,7 +54,7 @@ def envoi():
     phone6=''.join(phone5)
     number='whatsapp:+'+phone3
     message = client.messages.create(
-                              body=resultat2,
+                              body=last(),
                               from_='whatsapp:+14155238886',
                               to='whatsapp:+221776147852'
                           )
