@@ -43,7 +43,7 @@ def envoi():
     resultat2=resultat1.replace('</Message></Response>','')
     phone2=(str(phone))[:9]
     phone3=(str(phone))[10:]
-    phone4="+"
+    phone4="00"
     phone5=list()
     phone5.append(phone2)
     phone5.append(phone4)
