@@ -44,11 +44,15 @@ def envoi():
     phone2=(str(phone))[:9]
     phone3=(str(phone))[9:]
     phone4="00"
-    phone4+=phone3
+    phone5=list()
+    phone5.append(phone2)
+    phone5.append(phone4)
+    phone5.append(phone3)
+    phone6=','.join(phone5)
     message = client.messages.create(
-                              body=phone4,
+                              body=phone6,
                               from_='whatsapp:+14155238886',
-                              to=phone
+                              to='whatsapp:+221776147852'
                           )
     
     
