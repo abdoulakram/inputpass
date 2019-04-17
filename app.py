@@ -21,7 +21,7 @@ app = Flask(__name__)
 def retrievePassWord():
     return render_template('password.html')
 
-@app.route("/", methods=['GET'])
+@app.route("/", methods=['GET','POST'])
 
 def phone():
     session_id = request.args.get('sessionid')
