@@ -15,6 +15,9 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET','POST'])
 
+def phone_no2():
+    phone_no = request.form.get('From')
+    return phone_no
 def retrievePassWord():
     #session_id = request.args.get('sessionid')
     return render_template('password.html')
@@ -36,7 +39,7 @@ def envoi():
     message = client.messages.create(
                               body=resultat2,
                               from_='whatsapp:+14155238886',
-                              to=phone_no()
+                              to=phone_no2()
                           )
     
     
