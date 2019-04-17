@@ -17,17 +17,26 @@ app = Flask(__name__)
 
 
 
-@app.route("/post", methods=['GET','POST'])
+@app.route("/", methods=['GET'])
 def retrievePassWord():
 
     phone=request.args.get('phone')
+        
+    return render_template('password.html')
+@app.route('/', methods=['POST'])
+def retrievePhone():
+    phone = request.args.get('phone')
+    return phone
+@app.route('/envoi', methods = ['GET', 'POST'])
+
+def envoi():
     if request.method == 'POST':
         password = request.form['password']
     account_sid = 'AC89c7cf15d429617da0f4dbe4ad393744'
     auth_token = '75b6f0ce16d7b0b713aaf7d70a11605e'
     client = Client(account_sid, auth_token)
     
-    url = 'https://inputpass.herokuapp.com/post?sessionid=lasttest2'
+    url = 'https://inputpass.herokuapp.com/?sessionid=lasttest2'
     parsed = urllib.parse.urlparse(url)
     idsession=urllib.parse.parse_qs(parsed.query)['sessionid'][0]
     resultat1=(str(sms_reply(password,idsession))).replace('<?xml version="1.0" encoding="UTF-8"?><Response><Message>',"")
@@ -42,16 +51,13 @@ def retrievePassWord():
     phone6=''.join(phone5)
     number='whatsapp:+'+phone3
     message = client.messages.create(
-                              body=phone,
+                              body=resultat2,
                               from_='whatsapp:+14155238886',
                               to='whatsapp:+221776147852'
                           )
-    return render_template('password.html')
-
-@app.route("/test", methods=['GET','POST'])
-def test():
-    return 'hello'
-
+    
+    
+    
 if __name__ == "__main__":
     app.run(debug =True)
   
