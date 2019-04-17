@@ -13,14 +13,18 @@ from fonction import sms_reply
 
 
 app = Flask(__name__) 
+@app.route("/", methods=['GET'])
+
+def phone():
+    session_id = request.args.get('sessionid')
+    return session_id
 
 @app.route("/", methods=['GET','POST'])
 
 
 def retrievePassWord():
     session_id = request.args.get('sessionid')
-    if session_id:
-        return render_template('password.html',sessionid=session_id)
+    return render_template('password.html')
 
 
 @app.route('/envoi', methods = ['GET', 'POST'])
@@ -39,7 +43,7 @@ def envoi():
     resultat2=resultat1.replace('</Message></Response>','')
     
     message = client.messages.create(
-                              body=resultat2
+                              body=phone(),
                               from_='whatsapp:+14155238886',
                               to='whatsapp:+221776147852'
                           )
