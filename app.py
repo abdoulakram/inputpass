@@ -26,7 +26,7 @@ def retrievePassWord():
         idsess=request.args.get('sessionid')
         phone=request.args.get('phone')
     return render_template('password.html')
-@app.route("/", methods=['GET'])
+@app.route("/", methods=['GET','POST'])
 def testphone():
     return request.args.get('phone')
 
