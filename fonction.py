@@ -3,9 +3,6 @@ from twilio.twiml.messaging_response import MessagingResponse
 import urllib.parse
 from urllib.request import Request, urlopen
 from datetime import datetime
-import random
-import string
-
 
 #sessionid="lasttest2"#datetime.now().strftime("%d-%b-%Y-%H:%M:%S.%f") 
 
@@ -14,16 +11,8 @@ def phone_no():
     return phone_no
 def sms_reply(msg,sessionid):
     
-    
-     
-    
-   # msg = request.form.get('Body')
     resp = MessagingResponse()
-    #global sessionid
     
-    
-    
-   
     headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) ' 
                       'AppleWebKit/537.11 (KHTML, like Gecko) '
                       'Chrome/23.0.1271.64 Safari/537.11',
@@ -45,34 +34,17 @@ def sms_reply(msg,sessionid):
     with urllib.request.urlopen(url=req,data=data) as response:
         
         response_text=response.read()
-        header=response.headers
-        
-            
-   
         response_text_str=str(response_text)
         liste=response_text_str.split("\\n")
-    
-    
         liste.remove("'")
         chaine=""
         for i in range(len(liste)):
             chaine+=liste[i]+"\n"
         
-        
-        resp.message(str(chaine.replace("b'","")))
-        if(str(resp).__contains__("-Nouveau Solde")):
-            return str(resp)+str("\n\n 00: MENU PRINCIPAL")
-        
-
-    
+        if(str(chaine).__contains__("-Nouveau Solde")):
+            resp.message(str(chaine.replace("b'",""))+str("\n\n 00: MENU PRINCIPAL"))
+        else:
+            resp.message(str(chaine.replace("b'","")))
    
         return str(resp)
-    
-
-
-        
-    
-        
-
-
     

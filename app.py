@@ -3,31 +3,22 @@ from twilio.twiml.messaging_response import MessagingResponse
 import urllib.parse
 from urllib.request import Request, urlopen
 from datetime import datetime
-import random
-import string
-from flask import Flask, request, render_template, Markup, json, session, redirect, url_for
+from flask import Flask, request, render_template
 from twilio.rest import Client
 from fonction import sms_reply
 
 
-
-
-
 app = Flask(__name__) 
-
-
 
 @app.route("/", methods=['GET'])
 def retrievePassWord():
     global phone
     wts='whatsapp:+'
     num=str(request.args.get('phone')[10:])
-    phone=wts+num
-        
+    phone=wts+num   
     return render_template('password.html')
 
 @app.route('/envoi', methods = ['GET', 'POST'])
-
 def envoi():
     if request.method == 'POST':
         password = request.form['password']
@@ -44,9 +35,7 @@ def envoi():
                               body=resultat2,
                               from_='whatsapp:+14155238886',
                               to=phone
-                          )
-    
-    
+                                     )
     
 if __name__ == "__main__":
     app.run(debug =True)
