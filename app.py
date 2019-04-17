@@ -10,6 +10,7 @@ from twilio.rest import Client
 from fonction import sms_reply
 
 idsess=''
+phone=''
 
 
 app = Flask(__name__) 
@@ -20,15 +21,11 @@ app = Flask(__name__)
 
 def retrievePassWord():
     global idsess
+    global phone
     idsess=request.args.get('sessionid')
+    phone=request.args.get('phone')
     return render_template('password.html')
 
-@app.route("/", methods=['GET','POST'])
-
-def phone():
-    if request.method=='GET':
-        session_id = request.args.get('sessionid')
-    return session_id
 
 @app.route('/envoi', methods = ['GET', 'POST'])
 
@@ -48,7 +45,7 @@ def envoi():
     message = client.messages.create(
                               body=idsess,
                               from_='whatsapp:+14155238886',
-                              to='whatsapp:+221776147852'
+                              to=phone
                           )
     
     
