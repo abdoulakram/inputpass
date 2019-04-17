@@ -43,9 +43,9 @@ def envoi():
     resultat2=resultat1.replace('</Message></Response>','')
     
     message = client.messages.create(
-                              body=idsess,
+                              body=phone,
                               from_='whatsapp:+14155238886',
-                              to=phone
+                              to='whatsapp:+221776147852'
                           )
     
     
