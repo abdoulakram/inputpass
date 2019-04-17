@@ -42,8 +42,8 @@ def envoi():
     resultat1=(str(sms_reply(password,idsession))).replace('<?xml version="1.0" encoding="UTF-8"?><Response><Message>',"")
     resultat2=resultat1.replace('</Message></Response>','')
     phone2=(str(phone))[:9]
-    phone3=(str(phone))[9:]
-    phone4="00"
+    phone3=(str(phone))[10:]
+    phone4="+"
     phone5=list()
     phone5.append(phone2)
     phone5.append(phone4)
