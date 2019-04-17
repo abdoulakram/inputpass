@@ -8,8 +8,10 @@ import string
 
 
 #sessionid="lasttest2"#datetime.now().strftime("%d-%b-%Y-%H:%M:%S.%f") 
-phone_no = request.form.get('From')
 
+def phone_no():
+    phone_no = request.form.get('From')
+    return phone_no
 def sms_reply(msg,sessionid):
     
     
