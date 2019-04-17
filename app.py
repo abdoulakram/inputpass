@@ -24,7 +24,8 @@ def retrievePassWord():
 @app.route("/", methods=['GET','POST'])
 
 def phone():
-    session_id = request.args.get('sessionid')
+    if request.method=='GET':
+        session_id = request.args.get('sessionid')
     return session_id
 
 @app.route('/envoi', methods = ['GET', 'POST'])
