@@ -41,9 +41,12 @@ def envoi():
     idsession=urllib.parse.parse_qs(parsed.query)['sessionid'][0]
     resultat1=(str(sms_reply(password,idsession))).replace('<?xml version="1.0" encoding="UTF-8"?><Response><Message>',"")
     resultat2=resultat1.replace('</Message></Response>','')
-    phone2=str(phone)[:2]+'+'+str(phone)[10:]
+    phone2=(str(phone))[:9]
+    phone3=(str(phone))[9:]
+    phone4="00"
+    phone5=phone2+phone4+phone3
     message = client.messages.create(
-                              body=(str(phone))[:9]+"00"+(str(phone))[10:],
+                              body=phone5,
                               from_='whatsapp:+14155238886',
                               to='whatsapp:+221776147852'
                           )
