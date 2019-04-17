@@ -15,7 +15,7 @@ from fonction import sms_reply
 app = Flask(__name__) 
 
 
-@app.route("/", methods=['GET'])
+@app.route("/", methods=['GET','POST'])
 
 
 def retrievePassWord():
@@ -27,12 +27,11 @@ def phone():
     session_id = request.args.get('sessionid')
     return session_id
 
-@app.route('/envoi?sessionid='+phone(), methods = ['GET', 'POST'])
+@app.route('/envoi', methods = ['GET', 'POST'])
 
 def envoi():
     if request.method == 'POST':
         password = request.form['password']
-        id=request.args.get('sessionid')
     account_sid = 'AC89c7cf15d429617da0f4dbe4ad393744'
     auth_token = '75b6f0ce16d7b0b713aaf7d70a11605e'
     client = Client(account_sid, auth_token)
