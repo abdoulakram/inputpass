@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 
 
-@app.route("/", methods=['GET'])
+@app.route("/", methods=['POST'])
 def retrievePassWord():
     global idsess
     global phone
@@ -26,7 +26,7 @@ def retrievePassWord():
     phone=request.args.get('phone')
         
     return render_template('password.html')
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['GET'])
 def retrievePhone():
     phone = request.args.get('phone')
     return phone
