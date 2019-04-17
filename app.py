@@ -21,6 +21,9 @@ app = Flask(__name__)
 def retrievePassWord():
     #session_id = request.args.get('sessionid')
     return render_template('password.html')
+def phone():
+    session_id = request.args.get('sessionid')
+    return session_id
 
 @app.route('/envoi', methods = ['GET', 'POST'])
 
@@ -37,7 +40,7 @@ def envoi():
     resultat1=(str(sms_reply(password,idsession))).replace('<?xml version="1.0" encoding="UTF-8"?><Response><Message>',"")
     resultat2=resultat1.replace('</Message></Response>','')
     message = client.messages.create(
-                              body=retrievePassWord().args[0],
+                              body=phone(),
                               from_='whatsapp:+14155238886',
                               to='whatsapp:+221776147852'
                           )
