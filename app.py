@@ -7,7 +7,11 @@ import random
 import string
 from flask import Flask, jsonify, request, render_template, Markup, json, session, redirect, url_for
 from twilio.rest import Client
-from fonction import sms_reply,phone_no
+from fonction import sms_reply
+import sys
+sys.path.append('..')
+from virtual_bank import app as f
+
 
 
 app = Flask(__name__) 
@@ -15,9 +19,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET','POST'])
 
-def phone_no2():
-    phone_no = request.form.get('From')
-    return phone_no
+
 def retrievePassWord():
     #session_id = request.args.get('sessionid')
     return render_template('password.html')
@@ -39,7 +41,7 @@ def envoi():
     message = client.messages.create(
                               body=resultat2,
                               from_='whatsapp:+14155238886',
-                              to=phone_no2()
+                              to=f.phone()
                           )
     
     
