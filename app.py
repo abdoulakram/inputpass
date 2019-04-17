@@ -23,10 +23,7 @@ def retrievePassWord():
     phone=request.args.get('phone')
         
     return render_template('password.html')
-@app.route('/', methods=['POST'])
-def retrievePhone():
-    phone = request.args.get('phone')
-    return phone
+
 @app.route('/envoi', methods = ['GET', 'POST'])
 
 def envoi():
