@@ -6,6 +6,7 @@ from datetime import datetime
 from flask import Flask, request, render_template,redirect
 from twilio.rest import Client
 from fonction import sms_reply
+import config
 
 
 app = Flask(__name__) 
@@ -22,9 +23,8 @@ def retrievePassWord():
 def envoi():
     if request.method == 'POST':
         password = request.form['password']
-    account_sid = 'AC89c7cf15d429617da0f4dbe4ad393744'
-    auth_token = '75b6f0ce16d7b0b713aaf7d70a11605e'
-    client = Client(account_sid, auth_token)
+    
+    client = Client(config.account_sid,config.auth_token)
     
     url = 'https://inputpass.herokuapp.com/?sessionid=lasttest2'
     parsed = urllib.parse.urlparse(url)
