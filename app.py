@@ -3,7 +3,7 @@ from twilio.twiml.messaging_response import MessagingResponse
 import urllib.parse
 from urllib.request import Request, urlopen
 from datetime import datetime
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template,redirect
 from twilio.rest import Client
 from fonction import sms_reply
 
@@ -36,7 +36,7 @@ def envoi():
                               from_='whatsapp:+14155238886',
                               to=phone
                                      )
-    return render_template('password.html')
+    return redirect('https://wa.me/+14155238886')
 if __name__ == "__main__":
     app.run(debug =True)
   
