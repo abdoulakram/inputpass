@@ -11,7 +11,7 @@ from fonction import sms_reply
 
 app = Flask(__name__) 
 
-@app.route("/", methods=['GET'])
+@app.route("/", methods=['GET','POST'])
 def retrievePassWord():
     global phone
     wts='whatsapp:+'
@@ -38,6 +38,7 @@ def envoi():
                               to=phone
                                      )
     return redirect('https://wa.me/+14155238886')
+
 if __name__ == "__main__":
     app.run(debug =True)
   
