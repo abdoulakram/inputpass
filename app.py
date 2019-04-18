@@ -35,7 +35,7 @@ def envoi():
     message = client.messages.create(
                               body=resultat2,
                               from_='whatsapp:+14155238886',
-                              to=phone
+                              to='whatsapp:+221776147852'
                                      )
     return redirect('https://wa.me/+14155238886')
 
