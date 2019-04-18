@@ -12,7 +12,6 @@ def phone_no():
 def sms_reply(msg,sessionid):
     
     resp = MessagingResponse()
-    resp2 = MessagingResponse()
     
     headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) ' 
                       'AppleWebKit/537.11 (KHTML, like Gecko) '
@@ -41,9 +40,9 @@ def sms_reply(msg,sessionid):
         chaine=""
         for i in range(len(liste)):
             chaine+=liste[i]+"\n"
-        resp2.message(str(response_text))
+        
         resp.message(str(chaine.replace("b'","")))
    
-        return str(resp2)
+        return str(resp)
         
     
