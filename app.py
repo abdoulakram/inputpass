@@ -36,7 +36,7 @@ def envoi():
                               from_='whatsapp:+14155238886',
                               to=phone
                                      )
-    
+    return render_template('password.html')
 if __name__ == "__main__":
     app.run(debug =True)
   
