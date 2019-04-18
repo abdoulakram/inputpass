@@ -6,7 +6,7 @@ from datetime import datetime
 from flask import Flask, request, render_template,redirect
 from twilio.rest import Client
 from fonction import sms_reply
-import config
+
 
 
 app = Flask(__name__) 
