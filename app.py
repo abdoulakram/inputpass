@@ -15,8 +15,9 @@ app = Flask(__name__)
 def retrievePassWord():
     global phone
     wts='whatsapp:+'
-    num=str(request.args.get('phone')[10:])
-    phone=wts+num   
+    if request.method=='POST':
+        num=str(request.args.get('phone')[10:])
+        phone=wts+num   
     return render_template('password.html')
 
 @app.route('/envoi', methods = ['GET', 'POST'])
