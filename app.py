@@ -11,7 +11,7 @@ from fonction import sms_reply
 
 app = Flask(__name__) 
 
-@app.route("/", methods=['GET'])
+@app.route("/", methods=['GET','POST'])
 def retrievePassWord():
     global phone
     wts='whatsapp:+'
