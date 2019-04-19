@@ -14,7 +14,6 @@ app = Flask(__name__)
 @app.route("/", methods=['GET','POST'])
 def retrievePassWord():
     global phone
-    global num
     wts='whatsapp:+'
     num=str(request.args.get('phone')[10:])
     phone=wts+num   
@@ -38,7 +37,7 @@ def envoi():
                               from_='whatsapp:+14155238886',
                               to=phone
                                      )
-    return redirect('https://wa.me/+'+num)
+    return redirect('https://wa.me/+14155238886')
 
 if __name__ == "__main__":
     app.run(debug =True)
