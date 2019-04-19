@@ -11,13 +11,12 @@ from fonction import sms_reply
 
 app = Flask(__name__) 
 
-@app.route("/", methods=['GET','POST'])
+@app.route("/", methods=['GET'])
 def retrievePassWord():
     global phone
     wts='whatsapp:+'
-    if request.method=='POST':
-        num=str(request.args.get('phone')[10:])
-        phone=wts+num   
+    num=str(request.args.get('phone')[10:])
+    phone=wts+num   
     return render_template('password.html')
 
 @app.route('/envoi', methods = ['GET', 'POST'])
