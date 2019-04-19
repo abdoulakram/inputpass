@@ -16,8 +16,12 @@ def retrievePassWord():
     global phone
     wts='whatsapp:+'
     num=str(request.args.get('phone')[10:])
-    phone=wts+num   
-    return render_template('password.html')
+    phone=wts+num 
+    sess=request.args.get('sessionid')
+    if sess=="idsessiontest4": 
+        return render_template('password.html')
+    else:
+        return "hello"
 
 @app.route('/envoi', methods = ['GET', 'POST'])
 def envoi():
