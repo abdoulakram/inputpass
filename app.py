@@ -37,7 +37,7 @@ def envoi():
                               from_='whatsapp:+14155238886',
                               to=phone
                                      )
-    return redirect('https://wa.me/+14155238886')
+    return redirect('https://wa.me/+'+num)
 
 if __name__ == "__main__":
     app.run(debug =True)
